@@ -1,7 +1,7 @@
 FILES :=                              \
     Netflix.py                        \
     RunNetflix.py                     \
-    #RunNetflix.in                     \
+    RunNetflix.in                     \
     #RunNetflix.out                    \
     TestNetflix.py                    \
     #TestNetflix.out                   \
