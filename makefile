@@ -31,9 +31,10 @@ Netflix.log:
 RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) RunNetflix.py
-	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
-	diff RunNetflix.tmp RunNetflix.out
+	#./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
+	#diff RunNetflix.tmp RunNetflix.out
 	python3 -m cProfile RunNetflix.py < RunNetflix.in > RunNetflix.tmp
+	#python3 -m cProfile RunNetflix.py < /u/downing/cs/netflix/probe.txt > RunNetflix.tmp
 	cat RunNetflix.tmp
 
 TestNetflix.tmp: .pylintrc TestNetflix.py
