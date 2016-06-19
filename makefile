@@ -88,4 +88,4 @@ status:
 	git remote -v
 	git status
 
-test: Netflix.html Netflix.log RunNetflix.tmp TestNetflix.tmp Netflix-tests check
+test: check
