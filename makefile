@@ -1,7 +1,7 @@
 FILES :=                              \
     Netflix.py                        \
     RunNetflix.py                     \
-    #RunNetflix.in                     \
+    RunNetflix.in                     \
     #RunNetflix.out                    \
     TestNetflix.py                    \
     #TestNetflix.out                   \
@@ -88,4 +88,4 @@ status:
 	git remote -v
 	git status
 
-test: Netflix.html Netflix.log RunNetflix.tmp TestNetflix.tmp Netflix-tests check
+test: check
