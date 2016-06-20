@@ -35,17 +35,17 @@ RATINGS_LIST = []
 
 
 def netflix_predict(movie_id, cust_id, writer):
-	"""
-	movie_id, {int} id for individual movie
-	cust_id, {int} id for individual customer
-	writer, writer to write to output
-	"""
-	global ANSWERS_LIST
-	global RATINGS_LIST
+    """
+    movie_id, {int} id for individual movie
+    cust_id, {int} id for individual customer
+    writer, writer to write to output
+    """
+    global ANSWERS_LIST
+    global RATINGS_LIST
 
-	customer_avg = CUSTOMER_RATINGS.get(cust_id)
-	movie_avg = MOVIE_RATINGS.get(movie_id)
-	total_avg = round((customer_avg + movie_avg) / 2, 1)
+    customer_avg = CUSTOMER_RATINGS.get(cust_id)
+    movie_avg = MOVIE_RATINGS.get(movie_id)
+    total_avg = round((customer_avg + movie_avg) / 2, 1)
 
     RATINGS_LIST.append(total_avg)
     ANSWERS_LIST.append(ANSWERS_CACHE.get(movie_id).get(cust_id))
