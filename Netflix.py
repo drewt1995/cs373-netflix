@@ -23,8 +23,8 @@ if os.path.isfile(filepaths[0]):
     CUSTOMER_RATINGS = pickle.load(open(filepaths[1], "rb"))
     MOVIE_RATINGS = pickle.load(open(filepaths[2], "rb"))
 else:
-    cache_read_from_url = urlopen(urlpaths[0]).read()
-    ANSWERS_CACHE = pickle.loads(cache_read_from_url)
+    #cache_read_from_url = urlopen(urlpaths[0]).read()
+    #ANSWERS_CACHE = pickle.loads(cache_read_from_url)
     cache_read_from_url = urlopen(urlpaths[1]).read()
     CUSTOMER_RATINGS = pickle.loads(cache_read_from_url)
     cache_read_from_url = urlopen(urlpaths[2]).read()
