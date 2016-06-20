@@ -17,7 +17,7 @@ else
 endif
 
 .pylintrc:
-	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements --reports=n --generate-rcfile > $@
+	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements,no-name-in-module --reports=n --generate-rcfile > $@
 
 Netflix-tests:
 	git clone https://github.com/cs373-summer-2016/netflix-tests.git
@@ -31,6 +31,7 @@ Netflix.log:
 RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) RunNetflix.py
+	ulimit -u unlimited
 	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
 	diff RunNetflix.tmp RunNetflix.out
 	python3 -m cProfile RunNetflix.py < RunNetflix.in > RunNetflix.tmp
