@@ -23,18 +23,18 @@ if os.path.isfile(filepaths[0]):
     CUSTOMER_RATINGS = pickle.load(open(filepaths[1], "rb"))
     MOVIE_RATINGS = pickle.load(open(filepaths[2], "rb"))
 else:
-    ANSWERS_CACHE = pickle.load(urlopen(urlpaths[0]))
-    CUSTOMER_RATINGS = pickle.load(urlopen(urlpaths[1]))
-    MOVIE_RATINGS = pickle.load(urlopen(urlpaths[2]))
+    cache_read_from_url = urlopen(urlpaths[0]).read()
+    ANSWERS_CACHE = pickle.loads(cache_read_from_url)
+    cache_read_from_url = urlopen(urlpaths[1]).read()
+    CUSTOMER_RATINGS = pickle.loads(cache_read_from_url)
+    cache_read_from_url = urlopen(urlpaths[2]).read()
+    MOVIE_RATINGS = pickle.loads(cache_read_from_url)
 
 ANSWERS_LIST = []
 RATINGS_LIST = []
 
 
 def netflix_predict(movie_id, cust_id, writer):
-    global ANSWERS_LIST
-    global RATINGS_LIST
-
     customer_avg = CUSTOMER_RATINGS.get(cust_id)
     movie_avg = MOVIE_RATINGS.get(movie_id)
     total_avg = round((customer_avg + movie_avg) / 2, 1)
