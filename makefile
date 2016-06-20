@@ -12,7 +12,7 @@ ifeq ($(CI), true)
     COVERAGE := coverage
     PYLINT   := pylint
 else
-    COVERAGE := python3 -m coverage
+    COVERAGE := coverage-3.5
 	PYLINT   := pylint
 endif
 

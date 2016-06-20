@@ -14,21 +14,59 @@
 
 from io import StringIO
 from unittest import main, TestCase
+import sys
 
-#from Netflix import 
+from Netflix import netflix_rsme, ANSWERS_LIST, RATINGS_LIST
 
 # -----------
 # TestNetflix
 # -----------
-
-
 class TestNetflix (TestCase):
-    # ----
-    # function_name
-    # ----
 
-    def test_function_1(self):
-        self.assertEqual(1,  1)
+
+    # ----
+    # netflix_rsme
+    # ----
+    
+
+    def test_netflix_rsme_1(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        ANSWERS_LIST.extend([1, 3, 2, 4, 5])
+        RATINGS_LIST.extend([2, 2, 3, 1, 3])
+
+        rsme = round(netflix_rsme(), 2)
+        self.assertEqual(rsme, 1.79)
+
+    def test_netflix_rsme_2(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        ANSWERS_LIST.extend([1000, 2000, 1500, 1000, 1200])
+        RATINGS_LIST.extend([1500, 1500, 3000, 1000, 1800])
+
+        rsme = round(netflix_rsme(), 2)
+        self.assertEqual(rsme, 788.67)
+
+    def test_netflix_rsme_3(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        ANSWERS_LIST.extend([15, 11, 13, 18, 12])
+        RATINGS_LIST.extend([11, 18, 14, 15, 11])
+
+        rsme = round(netflix_rsme(), 2)
+        self.assertEqual(rsme, 3.90)
 
 # ----
 # main

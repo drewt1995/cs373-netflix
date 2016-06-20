@@ -15,6 +15,11 @@ RATINGS_LIST = []
 
 
 def netflix_predict(movie_id, cust_id, writer):
+	"""
+	movie_id, {int} id for individual movie
+	cust_id, {int} id for individual customer
+	writer, writer to write to output
+	"""
 	global ANSWERS_LIST
 	global RATINGS_LIST
 
