@@ -17,7 +17,7 @@ else
 endif
 
 .pylintrc:
-	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements --reports=n --generate-rcfile > $@
+	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements,no-name-in-module --reports=n --generate-rcfile > $@
 
 Netflix-tests:
 	git clone https://github.com/cs373-summer-2016/netflix-tests.git

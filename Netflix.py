@@ -1,37 +1,41 @@
 #!/usr/bin/env python3
-import sys
+
 import os
 import pickle
 from urllib.request import urlopen
 from numpy import mean, sqrt, square, subtract
 
-filepaths = [
-    "/u/downing/cs/netflix-caches/amm6364-answer.p",
+FILEPATHS = [
+    "/u/downing/cs/netflix-caches/bis266-probeAns.p",
     "/u/downing/cs/netflix-caches/amm6364-averageCustomerRating.p",
     "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p"
     ]
 
-urlpaths = [
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364-answer.p",
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364-averageCustomerRating.p",
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364-averageMovieRating.p"
+URLPATHS = [
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/bis266-probeAns.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
+    "amm6364-averageCustomerRating.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364"+
+    "-averageMovieRating.p"
     ]
 
 
-if os.path.isfile(filepaths[0]):
-    ANSWERS_CACHE = pickle.load(open(filepaths[0], "rb"))
-    CUSTOMER_RATINGS = pickle.load(open(filepaths[1], "rb"))
-    MOVIE_RATINGS = pickle.load(open(filepaths[2], "rb"))
+if os.path.isfile(FILEPATHS[0]):
+    ANSWERS_CACHE = pickle.load(open(FILEPATHS[0], "rb"))
+    CUSTOMER_RATINGS = pickle.load(open(FILEPATHS[1], "rb"))
+    MOVIE_RATINGS = pickle.load(open(FILEPATHS[2], "rb"))
 else:
-    cache_read_from_url = urlopen(urlpaths[0]).read()
-    ANSWERS_CACHE = pickle.loads(cache_read_from_url)
-    cache_read_from_url = urlopen(urlpaths[1]).read()
-    CUSTOMER_RATINGS = pickle.loads(cache_read_from_url)
-    cache_read_from_url = urlopen(urlpaths[2]).read()
-    MOVIE_RATINGS = pickle.loads(cache_read_from_url)
+    CACHE_READ = urlopen(URLPATHS[0]).read()
+    ANSWERS_CACHE = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[1]).read()
+    CUSTOMER_RATINGS = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[2]).read()
+    MOVIE_RATINGS = pickle.loads(CACHE_READ)
 
 ANSWERS_LIST = []
 RATINGS_LIST = []
+
+
 
 
 def netflix_predict(movie_id, cust_id, writer):
