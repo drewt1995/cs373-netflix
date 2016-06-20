@@ -2,7 +2,7 @@ FILES :=                              \
     Netflix.py                        \
     RunNetflix.py                     \
     RunNetflix.in                     \
-    #RunNetflix.out                    \
+    RunNetflix.out                    \
     TestNetflix.py                    \
     #TestNetflix.out                   \
     #Netflix.html                      \
@@ -31,8 +31,8 @@ Netflix.log:
 RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) RunNetflix.py
-	#./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
-	#diff RunNetflix.tmp RunNetflix.out
+	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
+	diff RunNetflix.tmp RunNetflix.out
 	python3 -m cProfile RunNetflix.py < RunNetflix.in > RunNetflix.tmp
 	#python3 -m cProfile RunNetflix.py < /u/downing/cs/netflix/probe.txt > RunNetflix.tmp
 	cat RunNetflix.tmp
@@ -40,7 +40,7 @@ RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 TestNetflix.tmp: .pylintrc TestNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) TestNetflix.py
-	$(COVERAGE) run    --branch TestNetflix.py >  TestNetflix.tmp 2>&1
+	$(COVERAGE) run --omit='*requests*,*numpy*' --branch TestNetflix.py >  TestNetflix.tmp 2>&1
 	$(COVERAGE) report -m                      >> TestNetflix.tmp
 	cat TestNetflix.tmp
 
@@ -89,4 +89,4 @@ status:
 	git remote -v
 	git status
 
-test: check
+test: TestNetflix.tmp RunNetflix.tmp check
