@@ -40,7 +40,7 @@ def netflix_predict(movie_id, cust_id, writer):
     total_avg = round((customer_avg + movie_avg) / 2, 1)
 
     RATINGS_LIST.append(total_avg)
-    ANSWERS_LIST.append(ANSWERS_CACHE.get(movie_id).get(cust_id))
+    #ANSWERS_LIST.append(ANSWERS_CACHE.get(movie_id).get(cust_id))
     writer.write(str(total_avg) + "\n")
 
 def netflix_solve(reader, writer):
