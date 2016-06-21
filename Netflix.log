@@ -1,3 +1,15 @@
+commit 9746299efe262b75bae4c71b9d055ec70e569d16
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Tue Jun 21 13:52:27 2016 -0500
+
+    removing unused import sys
+
+commit bbb810422700189dd5703756cd5f4c48760e2770
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 13:46:53 2016 -0500
+
+    Fixed formatting issues with pylint, ran autopep8 on files and completed makefile check list
+
 commit 870c18abd2727fae0935a4c9aa2acb224a69ec60
 Author: Julio Mendez <julio94@cs.utexas.edu>
 Date:   Tue Jun 21 13:36:59 2016 -0500
