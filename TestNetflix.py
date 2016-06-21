@@ -14,13 +14,12 @@
 
 from io import StringIO
 from unittest import main, TestCase
-import sys
 import os
 import pickle
 from urllib.request import urlopen
 
-from Netflix import netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, RATINGS_LIST, MOVIE_YEAR, YEAR_AVERAGE 
-
+from Netflix import netflix_year_average, netflix_solve, netflix_predict
+from Netflix import ANSWERS_LIST, RATINGS_LIST, netflix_rsme
 
 FILEPATHS = [
     "/u/downing/cs/netflix-caches/bis266-probeAns.p",
@@ -28,18 +27,18 @@ FILEPATHS = [
     "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p",
     "/u/downing/cs/netflix-caches/bdd465-movieYear.p",
     "/u/downing/cs/netflix-caches/sy6955-avgUserFiveYears.p"
-    ]
+]
 
 URLPATHS = [
     "http://www.cs.utexas.edu/users/downing/netflix-caches/bis266-probeAns.p",
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/" +
     "amm6364-averageCustomerRating.p",
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364"+
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364" +
     "-averageMovieRating.p",
     "http://www.cs.utexas.edu/users/downing/netflix-caches/bdd465-movieYear.p",
-    "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/" +
     "sy6955-avgUserFiveYears.p",
-    ]
+]
 
 
 if os.path.isfile(FILEPATHS[0]):
@@ -66,10 +65,42 @@ else:
 # -----------
 class TestNetflix (TestCase):
     # ----
+    # netflix_year_average
+    # ----
+
+    def test_netflix_year_average_1(self):
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 30878
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 3.5590361445783132)
+
+    def test_netflix_year_average_2(self):
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 2647871
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 2.9221105527638191)
+
+    def test_netflix_year_average_3(self):
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 1283744
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 3.7692307692307692)
+
+    # ----
     # netflix_predict
     # ----
-    
-
     def test_netflix_predict_1(self):
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
@@ -92,7 +123,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_predict(movie_id, cust_id, write)
         out = write.getvalue()
-        self.assertEqual(out, "3.3\n")  
+        self.assertEqual(out, "3.3\n")
 
     def test_netflix_predict_3(self):
         ANSWERS_LIST[:] = []
@@ -104,14 +135,11 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_predict(movie_id, cust_id, write)
         out = write.getvalue()
-        self.assertEqual(out, "3.7\n") 
-
+        self.assertEqual(out, "3.7\n")
 
     # ----
     # netflix_solve
     # ----
-    
-
     def test_netflix_solve_1(self):
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
@@ -135,17 +163,18 @@ class TestNetflix (TestCase):
     def test_netflix_solve_3(self):
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
-        file_in = StringIO("10002:\n1450941\n1213181\n308502\n2581993\n10003:\n1515111\n10004:\n1737087\n1270334\n1262711\n")
+        file_in = StringIO("10002:\n1450941\n1213181\n308502\n2581993" +
+                           "\n10003:\n1515111\n10004:\n1737087\n1270334\n1262711\n")
 
         write = StringIO()
         netflix_solve(file_in, write)
         out = write.getvalue()
-        self.assertEqual(out, "10002:\n4.3\n3.8\n4.5\n4.2\n10003:\n3.2\n10004:\n4.5\n4.0\n3.8\nRMSE: 0.65\n")
+        self.assertEqual(out, "10002:\n4.3\n3.8\n4.5\n4.2\n10003:" +
+                         "\n3.2\n10004:\n4.5\n4.0\n3.8\nRMSE: 0.65\n")
 
     # ----
     # netflix_rsme
     # ----
-    
 
     def test_netflix_rsme_1(self):
 

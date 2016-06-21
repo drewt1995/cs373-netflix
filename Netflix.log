@@ -1,3 +1,39 @@
+commit 9746299efe262b75bae4c71b9d055ec70e569d16
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Tue Jun 21 13:52:27 2016 -0500
+
+    removing unused import sys
+
+commit bbb810422700189dd5703756cd5f4c48760e2770
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 13:46:53 2016 -0500
+
+    Fixed formatting issues with pylint, ran autopep8 on files and completed makefile check list
+
+commit 870c18abd2727fae0935a4c9aa2acb224a69ec60
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Tue Jun 21 13:36:59 2016 -0500
+
+    Adding .gitignore
+
+commit 6e9ec47932b368f16a9054dc12cf41f39b3123a1
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Tue Jun 21 13:21:23 2016 -0500
+
+    Added tests for netflix_year_average
+
+commit 5f2db79ddaeb75e2be4db399585a8acf6944d0ba
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 13:06:20 2016 -0500
+
+    Committing so can merge to master
+
+commit 1d3eecd4830acb2fdef13f02e6c6b8410a6a9947
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 13:02:05 2016 -0500
+
+    Fixed some bugs with integrating with travis
+
 commit e262a52e73a68106c917741b39399d40da7324b3
 Author: Andrew Turner <aturner@cs.utexas.edu>
 Date:   Tue Jun 21 12:54:21 2016 -0500
