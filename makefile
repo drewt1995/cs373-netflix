@@ -2,7 +2,7 @@ FILES :=                              \
     Netflix.py                        \
     RunNetflix.py                     \
     RunNetflix.in                     \
-    #RunNetflix.out                    \
+    RunNetflix.out                    \
     TestNetflix.py                    \
     #TestNetflix.out                   \
     #Netflix.html                      \
@@ -12,12 +12,12 @@ ifeq ($(CI), true)
     COVERAGE := coverage
     PYLINT   := pylint
 else
-    COVERAGE := python3 -m coverage
+    COVERAGE := coverage-3.5
 	PYLINT   := pylint
 endif
 
 .pylintrc:
-	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements --reports=n --generate-rcfile > $@
+	$(PYLINT) --disable=bad-whitespace,missing-docstring,pointless-string-statement,global-statement,too-many-branches,trailing-whitespace,too-many-statements,no-name-in-module --reports=n --generate-rcfile > $@
 
 Netflix-tests:
 	git clone https://github.com/cs373-summer-2016/netflix-tests.git
@@ -34,12 +34,13 @@ RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp
 	diff RunNetflix.tmp RunNetflix.out
 	python3 -m cProfile RunNetflix.py < RunNetflix.in > RunNetflix.tmp
+	#python3 -m cProfile RunNetflix.py < /u/downing/cs/netflix/probe.txt > RunNetflix.tmp
 	cat RunNetflix.tmp
 
 TestNetflix.tmp: .pylintrc TestNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) TestNetflix.py
-	$(COVERAGE) run    --branch TestNetflix.py >  TestNetflix.tmp 2>&1
+	$(COVERAGE) run --omit='*requests*,*numpy*' --branch TestNetflix.py >  TestNetflix.tmp 2>&1
 	$(COVERAGE) report -m                      >> TestNetflix.tmp
 	cat TestNetflix.tmp
 
@@ -71,7 +72,7 @@ clean:
 	rm -f  RunNetflix.tmp
 	rm -f  TestNetflix.tmp
 	rm -rf __pycache__
-	rm -rf Netflix-tests
+	rm -rf netflix-tests
 
 config:
 	git config -l
@@ -88,4 +89,4 @@ status:
 	git remote -v
 	git status
 
-test: check
+test: Netflix.html Netflix.log Netflix-tests TestNetflix.tmp RunNetflix.tmp check

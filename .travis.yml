@@ -3,7 +3,7 @@ language: python
 python:
    - "3.5"
 
-sudo: false
+sudo: required
 
 install:
     - pip install --upgrade pip
@@ -11,6 +11,7 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
+    - pip install requests
 
 before_script:
     - uname -a
