@@ -1,12 +1,16 @@
-FILES :=                              \
-    Netflix.py                        \
-    RunNetflix.py                     \
-    RunNetflix.in                     \
-    RunNetflix.out                    \
-    TestNetflix.py                    \
-    #TestNetflix.out                   \
-    #Netflix.html                      \
-    #Netflix.log
+FILES :=                                  \
+    Netflix.py                            \
+    RunNetflix.py                         \
+    RunNetflix.in                         \
+    RunNetflix.out                        \
+    TestNetflix.py                        \
+    TestNetflix.out                       \
+    Netflix.html                      	  \
+    Netflix.log						      \
+    netflix-tests/jem4372-RunNetflix.in   \
+    netflix-tests/jem4372-RunNetflix.out  \
+    netflix-tests/jem4372-TestNetflix.py  \
+    netflix-tests/jem4372-TestNetflix.out \
 
 ifeq ($(CI), true)
     COVERAGE := coverage
