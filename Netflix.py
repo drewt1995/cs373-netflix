@@ -40,8 +40,8 @@ RATINGS_LIST = []
 
 def netflix_predict(movie_id, cust_id, writer):
     """
-    movie_id the ID of the movie that is being looked up 
-    cust_id the ID of the customer that is being predicted
+    movie_id, {int} id for individual movie
+    cust_id, {int} id for individual customer
     writer the output of the program to write to
     """
     assert  1 <= cust_id <= 2649429
