@@ -8,7 +8,9 @@ from numpy import mean, sqrt, square, subtract
 FILEPATHS = [
     "/u/downing/cs/netflix-caches/bis266-probeAns.p",
     "/u/downing/cs/netflix-caches/amm6364-averageCustomerRating.p",
-    "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p"
+    "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p",
+    "/u/downing/cs/netflix-caches/bdd465-movieYear.p",
+    "/u/downing/cs/netflix-caches/sy6955-avgUserFiveYears.p"
     ]
 
 URLPATHS = [
@@ -16,7 +18,10 @@ URLPATHS = [
     "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
     "amm6364-averageCustomerRating.p",
     "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364"+
-    "-averageMovieRating.p"
+    "-averageMovieRating.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/bdd465-movieYear.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
+    "sy6955-avgUserFiveYears.p",
     ]
 
 
@@ -24,6 +29,8 @@ if os.path.isfile(FILEPATHS[0]):
     ANSWERS_CACHE = pickle.load(open(FILEPATHS[0], "rb"))
     CUSTOMER_RATINGS = pickle.load(open(FILEPATHS[1], "rb"))
     MOVIE_RATINGS = pickle.load(open(FILEPATHS[2], "rb"))
+    MOVIE_YEAR = pickle.load(open(FILEPATHS[3], "rb"))
+    YEAR_AVERAGE = pickle.load(open(FILEPATHS[4], "rb"))
 else:
     CACHE_READ = urlopen(URLPATHS[0]).read()
     ANSWERS_CACHE = pickle.loads(CACHE_READ)
@@ -31,11 +38,27 @@ else:
     CUSTOMER_RATINGS = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[2]).read()
     MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[3]).read()
+    MOVIE_YEAR = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[4]).read()
+    YEAR_AVERAGE = pickle.loads(CACHE_READ)
 
 ANSWERS_LIST = []
 RATINGS_LIST = []
 
 
+def netflix_year_average(movie_id, cust_id):
+    """
+    movie_id, {int} id for individual movie to get year of
+    cust_id, {int} id for individual customer to look up avg
+    """
+    movie_date = MOVIE_YEAR.get(movie_id)
+
+    if movie_date == "NULL":
+        return YEAR_AVERAGE.get(cust_id).get("NULL")
+    else:
+        movie_date = (int(movie_date) // 5) * 5
+        return YEAR_AVERAGE.get(cust_id).get(movie_date)
 
 
 def netflix_predict(movie_id, cust_id, writer):
@@ -49,7 +72,8 @@ def netflix_predict(movie_id, cust_id, writer):
 
     customer_avg = CUSTOMER_RATINGS.get(cust_id)
     movie_avg = MOVIE_RATINGS.get(movie_id)
-    total_avg = round((customer_avg + movie_avg) / 2, 1)
+    year_avg = netflix_year_average(movie_id, cust_id)
+    total_avg = round((customer_avg + movie_avg + year_avg) / 3, 1)
 
     assert 1 <= total_avg <= 5
 

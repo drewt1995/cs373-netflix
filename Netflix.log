@@ -1,8 +1,65 @@
+commit e262a52e73a68106c917741b39399d40da7324b3
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 12:54:21 2016 -0500
+
+    Updating makefile to debug on travis
+
+commit 73bc3175bfc95bbf05b73f97d76b3c7dbaed5c18
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 12:46:58 2016 -0500
+
+    Brought RMSE below 1.0 for probe data, fixed tests since data was off
+
+commit ed7c078c9a9b55488857d415aa51ab457a3917f4
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 23:34:49 2016 -0500
+
+    Adding tests for predict&solve
+
+commit d674bae60c05495ecc8bc1dfc3c1c47ecc2f8253
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 19:22:52 2016 -0500
+
+    Commiting to merge with master
+
+commit 29ffb7f0e71b4553563a41c5c268aa4ab024a7e5
+Merge: 84fe662 30ba91d
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 19:20:57 2016 -0500
+
+    Merge branch 'devBranch' of https://github.com/drewt1995/cs373-netflix into devBranch
+
 commit 84fe662b672a5595c05fd408d5442979405ffb85
 Author: Andrew Turner <aturner@cs.utexas.edu>
 Date:   Mon Jun 20 19:13:54 2016 -0500
 
     added lines to makefile, created netflix log and netflix html
+
+commit 30ba91d14dde83f8d5d40e5c5be0e086c6ab4042
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 19:02:21 2016 -0500
+
+    Adding unit test for Netflix_solve
+
+commit 75ddc06ac929124787bef5c5038c1d304caaa898
+Merge: 2acc665 94523e9
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 18:50:41 2016 -0500
+
+    Merge branch 'devBranch' of https://github.com/drewt1995/cs373-netflix into devBranch
+
+commit 2acc665d211c81855dd21cc1a8b6f0e72a4fc2d2
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 18:50:17 2016 -0500
+
+    Indents
+
+commit 7f4591bf0e2a0866e879724ec913bcbc3be10ba2
+Merge: a4d940d 9a890df
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 18:48:28 2016 -0500
+
+    Merge branch 'devBranch' of https://github.com/drewt1995/cs373-netflix into devBranch
 
 commit 94523e9f546951fa373096dad6806a08013bf185
 Author: Andrew Turner <aturner@cs.utexas.edu>
@@ -21,6 +78,12 @@ Author: Andrew Turner <aturner@cs.utexas.edu>
 Date:   Mon Jun 20 18:27:08 2016 -0500
 
     Changed a makefile param to check and see if travis will work now
+
+commit a4d940d2ad8be75b51e9c074b092d7e8562f4975
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Mon Jun 20 18:23:51 2016 -0500
+
+    Adding tests for netflix_rsme
 
 commit 9a890df522237f189957071c7a973da2d626d77a
 Author: Andrew Turner <aturner@cs.utexas.edu>
