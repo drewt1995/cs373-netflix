@@ -39,9 +39,9 @@ else:
     CACHE_READ = urlopen(URLPATHS[2]).read()
     MOVIE_RATINGS = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[3]).read()
-    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    MOVIE_YEAR = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[4]).read()
-    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    YEAR_AVERAGE = pickle.loads(CACHE_READ)
 
 ANSWERS_LIST = []
 RATINGS_LIST = []

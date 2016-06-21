@@ -19,7 +19,7 @@ import os
 import pickle
 from urllib.request import urlopen
 
-from Netflix import netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, RATINGS_LIST
+from Netflix import netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, RATINGS_LIST, MOVIE_YEAR, YEAR_AVERAGE 
 
 
 FILEPATHS = [
@@ -56,9 +56,9 @@ else:
     CACHE_READ = urlopen(URLPATHS[2]).read()
     MOVIE_RATINGS = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[3]).read()
-    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    MOVIE_YEAR = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[4]).read()
-    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    YEAR_AVERAGE = pickle.loads(CACHE_READ)
 
 
 # -----------
@@ -71,8 +71,6 @@ class TestNetflix (TestCase):
     
 
     def test_netflix_predict_1(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
 
@@ -85,8 +83,6 @@ class TestNetflix (TestCase):
         self.assertEqual(out, "3.6\n")
 
     def test_netflix_predict_2(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
 
@@ -99,8 +95,6 @@ class TestNetflix (TestCase):
         self.assertEqual(out, "3.3\n")  
 
     def test_netflix_predict_3(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
 
@@ -119,8 +113,6 @@ class TestNetflix (TestCase):
     
 
     def test_netflix_solve_1(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
         file_in = StringIO("1:\n30878\n2647871\n1283744\n2488120\n")
@@ -131,8 +123,6 @@ class TestNetflix (TestCase):
         self.assertEqual(out, "1:\n3.6\n3.3\n3.7\n4.4\nRMSE: 0.61\n")
 
     def test_netflix_solve_2(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
         file_in = StringIO("1000:\n2326571\n977808\n1010534\n1861759\n")
@@ -143,8 +133,6 @@ class TestNetflix (TestCase):
         self.assertEqual(out, "1000:\n3.5\n3.3\n2.8\n4.4\nRMSE: 0.58\n")
 
     def test_netflix_solve_3(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
         file_in = StringIO("10002:\n1450941\n1213181\n308502\n2581993\n10003:\n1515111\n10004:\n1737087\n1270334\n1262711\n")
@@ -160,8 +148,6 @@ class TestNetflix (TestCase):
     
 
     def test_netflix_rsme_1(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
 
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
@@ -173,8 +159,6 @@ class TestNetflix (TestCase):
         self.assertEqual(rsme, 1.79)
 
     def test_netflix_rsme_2(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
 
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
@@ -186,8 +170,6 @@ class TestNetflix (TestCase):
         self.assertEqual(rsme, 788.67)
 
     def test_netflix_rsme_3(self):
-        global ANSWERS_LIST
-        global RATINGS_LIST
 
         ANSWERS_LIST[:] = []
         RATINGS_LIST[:] = []
