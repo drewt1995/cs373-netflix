@@ -1,0 +1,107 @@
+commit 94523e9f546951fa373096dad6806a08013bf185
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 18:35:01 2016 -0500
+
+    Remove ulimit test from makefile
+
+commit e26c668a1235eeb72e631441ca333936d58f89ea
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 18:32:57 2016 -0500
+
+    Changed caches to conserve memory in travis
+
+commit acad7921bc4c96d8188ec3fbbdb5c9801244db6c
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 18:27:08 2016 -0500
+
+    Changed a makefile param to check and see if travis will work now
+
+commit 9a890df522237f189957071c7a973da2d626d77a
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 18:04:52 2016 -0500
+
+    Fixed code back to what it was, moving on for now
+
+commit 93a40e94a6857e2bda14a530508fd74934d1c503
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 18:00:22 2016 -0500
+
+    Attempting to remove answers cache to see if it compiles on travis, currently getting killed status
+
+commit 9bb65934ebc60d52c484b6058f4d6af4b4102a71
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:56:51 2016 -0500
+
+    Attempting to remove answers cache to see if thats the issue on travis
+
+commit 280ea5dab33f5a8685dbed49c1be572b4618cf47
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:51:22 2016 -0500
+
+    Fixed the issues with pickle not loading from URL on CS machines
+
+commit f9234635b02b0cf17c8529a1630501faea57b5b5
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:31:46 2016 -0500
+
+    Updating to try and get travis to work
+
+commit 2047b982fe7d99e49fcc1fd54fedc52d69e14f43
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:25:58 2016 -0500
+
+    Changed permissions so it can run on travis
+
+commit ce13b9f1ae3f725b8f06510f492d10fbd4a1f6e0
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:24:51 2016 -0500
+
+    Pushing to find out if build works on travis with new requests lib
+
+commit 233eb123389ef3c040626e77f10331a4458f6306
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 17:00:58 2016 -0500
+
+    Disabled coverage on numpy and requests
+
+commit bea3bd8cd51b39c28bbe12aec1eae5ccc1c2ef6b
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Sat Jun 18 20:41:06 2016 -0500
+
+    Added RMSE prediction
+
+commit f7201bf0b2738ab287a5a30c224f36f4fe807a2e
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Sat Jun 18 20:03:31 2016 -0500
+
+    Updated Netflix.py so that it computes the averages
+
+commit 305d9abbe9d911292400b0af68de44e38ca74b43
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Sat Jun 18 19:40:29 2016 -0500
+
+    Updated makefile to work with travis ATM, Created netflix_solve function in Netflix.py
+
+commit f9c2a4f63afada3784ecd38c0af8c1422e60cd68
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Sat Jun 18 19:34:24 2016 -0500
+
+    Created the correct contents of RunNetflix.py
+
+commit f8fec27a4cd03f85356af18163fa8a8feeac79f4
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Sat Jun 18 19:31:15 2016 -0500
+
+    Adding RunNetflix.in
+
+commit 825ea23db9dfe6d3b97fc129d1356fe0e7d1829d
+Author: Julio Mendez <julio94@cs.utexas.edu>
+Date:   Sat Jun 18 19:07:57 2016 -0500
+
+    Skeleton Test file
+
+commit f89f2169588b841436637933791730078a0a5650
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Sat Jun 18 18:47:39 2016 -0500
+
+    Added all the starting files to the repository

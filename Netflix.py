@@ -39,13 +39,28 @@ RATINGS_LIST = []
 
 
 def netflix_predict(movie_id, cust_id, writer):
+    """
+    movie_id the ID of the movie that is being looked up 
+    cust_id the ID of the customer that is being predicted
+    writer the output of the program to write to
+    """
+    assert  1 <= cust_id <= 2649429
+    assert 1 <= movie_id <= 17770
+
     customer_avg = CUSTOMER_RATINGS.get(cust_id)
     movie_avg = MOVIE_RATINGS.get(movie_id)
     total_avg = round((customer_avg + movie_avg) / 2, 1)
 
+    assert 1 <= total_avg <= 5
+
     RATINGS_LIST.append(total_avg)
     ANSWERS_LIST.append(ANSWERS_CACHE.get(movie_id).get(cust_id))
+
+    assert len(RATINGS_LIST) == len(ANSWERS_LIST)
+
     writer.write(str(total_avg) + "\n")
+
+
 
 def netflix_solve(reader, writer):
     """

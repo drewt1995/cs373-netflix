@@ -72,7 +72,7 @@ clean:
 	rm -f  RunNetflix.tmp
 	rm -f  TestNetflix.tmp
 	rm -rf __pycache__
-	rm -rf Netflix-tests
+	rm -rf netflix-tests
 
 config:
 	git config -l
@@ -89,4 +89,4 @@ status:
 	git remote -v
 	git status
 
-test: TestNetflix.tmp RunNetflix.tmp check
+test: Netflix.html Netflix.log Netflix-tests TestNetflix.tmp RunNetflix.tmp check
