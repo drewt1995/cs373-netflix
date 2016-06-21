@@ -25,7 +25,9 @@ from Netflix import netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, 
 FILEPATHS = [
     "/u/downing/cs/netflix-caches/bis266-probeAns.p",
     "/u/downing/cs/netflix-caches/amm6364-averageCustomerRating.p",
-    "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p"
+    "/u/downing/cs/netflix-caches/amm6364-averageMovieRating.p",
+    "/u/downing/cs/netflix-caches/bdd465-movieYear.p",
+    "/u/downing/cs/netflix-caches/sy6955-avgUserFiveYears.p"
     ]
 
 URLPATHS = [
@@ -33,7 +35,10 @@ URLPATHS = [
     "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
     "amm6364-averageCustomerRating.p",
     "http://www.cs.utexas.edu/users/downing/netflix-caches/amm6364"+
-    "-averageMovieRating.p"
+    "-averageMovieRating.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/bdd465-movieYear.p",
+    "http://www.cs.utexas.edu/users/downing/netflix-caches/"+
+    "sy6955-avgUserFiveYears.p",
     ]
 
 
@@ -41,6 +46,8 @@ if os.path.isfile(FILEPATHS[0]):
     ANSWERS_CACHE = pickle.load(open(FILEPATHS[0], "rb"))
     CUSTOMER_RATINGS = pickle.load(open(FILEPATHS[1], "rb"))
     MOVIE_RATINGS = pickle.load(open(FILEPATHS[2], "rb"))
+    MOVIE_YEAR = pickle.load(open(FILEPATHS[3], "rb"))
+    YEAR_AVERAGE = pickle.load(open(FILEPATHS[4], "rb"))
 else:
     CACHE_READ = urlopen(URLPATHS[0]).read()
     ANSWERS_CACHE = pickle.loads(CACHE_READ)
@@ -48,6 +55,12 @@ else:
     CUSTOMER_RATINGS = pickle.loads(CACHE_READ)
     CACHE_READ = urlopen(URLPATHS[2]).read()
     MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[3]).read()
+    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+    CACHE_READ = urlopen(URLPATHS[4]).read()
+    MOVIE_RATINGS = pickle.loads(CACHE_READ)
+
+
 # -----------
 # TestNetflix
 # -----------
@@ -69,7 +82,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_predict(movie_id, cust_id, write)
         out = write.getvalue()
-        self.assertEqual(out, "3.7\n")
+        self.assertEqual(out, "3.6\n")
 
     def test_netflix_predict_2(self):
         global ANSWERS_LIST
@@ -83,7 +96,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_predict(movie_id, cust_id, write)
         out = write.getvalue()
-        self.assertEqual(out, "3.5\n")  
+        self.assertEqual(out, "3.3\n")  
 
     def test_netflix_predict_3(self):
         global ANSWERS_LIST
@@ -97,7 +110,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_predict(movie_id, cust_id, write)
         out = write.getvalue()
-        self.assertEqual(out, "3.6\n") 
+        self.assertEqual(out, "3.7\n") 
 
 
     # ----
@@ -115,7 +128,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_solve(file_in, write)
         out = write.getvalue()
-        self.assertEqual(out, "1:\n3.7\n3.5\n3.6\n4.2\nRMSE: 0.58\n")
+        self.assertEqual(out, "1:\n3.6\n3.3\n3.7\n4.4\nRMSE: 0.61\n")
 
     def test_netflix_solve_2(self):
         global ANSWERS_LIST
@@ -127,7 +140,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_solve(file_in, write)
         out = write.getvalue()
-        self.assertEqual(out, "1000:\n3.4\n3.3\n3.1\n4.1\nRMSE: 0.75\n")
+        self.assertEqual(out, "1000:\n3.5\n3.3\n2.8\n4.4\nRMSE: 0.58\n")
 
     def test_netflix_solve_3(self):
         global ANSWERS_LIST
@@ -139,7 +152,7 @@ class TestNetflix (TestCase):
         write = StringIO()
         netflix_solve(file_in, write)
         out = write.getvalue()
-        self.assertEqual(out, "10002:\n4.0\n3.5\n4.2\n3.8\n10003:\n3.0\n10004:\n4.4\n3.9\n4.0\nRMSE: 0.86\n")
+        self.assertEqual(out, "10002:\n4.3\n3.8\n4.5\n4.2\n10003:\n3.2\n10004:\n4.5\n4.0\n3.8\nRMSE: 0.65\n")
 
     # ----
     # netflix_rsme
