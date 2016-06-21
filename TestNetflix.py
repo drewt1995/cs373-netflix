@@ -19,7 +19,7 @@ import os
 import pickle
 from urllib.request import urlopen
 
-from Netflix import netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, RATINGS_LIST, MOVIE_YEAR, YEAR_AVERAGE 
+from Netflix import netflix_year_average, netflix_solve, netflix_predict, netflix_rsme, ANSWERS_LIST, RATINGS_LIST, MOVIE_YEAR, YEAR_AVERAGE 
 
 
 FILEPATHS = [
@@ -65,6 +65,51 @@ else:
 # TestNetflix
 # -----------
 class TestNetflix (TestCase):
+    # ----
+    # netflix_year_average
+    # ----
+    
+
+    def test_netflix_year_average_1(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 30878
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 3.5590361445783132)
+
+
+    def test_netflix_year_average_2(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 2647871
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 2.9221105527638191)
+
+
+    def test_netflix_year_average_3(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 1283744
+
+        out = netflix_year_average(movie_id, cust_id)
+        self.assertEqual(out, 3.7692307692307692)
+
+
+
     # ----
     # netflix_predict
     # ----
