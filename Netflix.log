@@ -1,3 +1,9 @@
+commit 84fe662b672a5595c05fd408d5442979405ffb85
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Mon Jun 20 19:13:54 2016 -0500
+
+    added lines to makefile, created netflix log and netflix html
+
 commit 94523e9f546951fa373096dad6806a08013bf185
 Author: Andrew Turner <aturner@cs.utexas.edu>
 Date:   Mon Jun 20 18:35:01 2016 -0500
