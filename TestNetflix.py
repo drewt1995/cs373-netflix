@@ -14,7 +14,6 @@
 
 from io import StringIO
 from unittest import main, TestCase
-import sys
 import os
 import pickle
 from urllib.request import urlopen
