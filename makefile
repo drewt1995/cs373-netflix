@@ -40,7 +40,7 @@ RunNetflix.tmp: .pylintrc RunNetflix.in RunNetflix.out RunNetflix.py
 TestNetflix.tmp: .pylintrc TestNetflix.py
 	-$(PYLINT) Netflix.py
 	-$(PYLINT) TestNetflix.py
-	$(COVERAGE) run --omit='*requests*,*numpy*' --branch TestNetflix.py >  TestNetflix.tmp 2>&1
+	$(COVERAGE) run --omit='*requests*,*numpy*' --branch TestNetflix.py 
 	$(COVERAGE) report -m                      >> TestNetflix.tmp
 	cat TestNetflix.tmp
 
