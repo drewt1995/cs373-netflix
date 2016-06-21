@@ -1,3 +1,15 @@
+commit e262a52e73a68106c917741b39399d40da7324b3
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 12:54:21 2016 -0500
+
+    Updating makefile to debug on travis
+
+commit 73bc3175bfc95bbf05b73f97d76b3c7dbaed5c18
+Author: Andrew Turner <aturner@cs.utexas.edu>
+Date:   Tue Jun 21 12:46:58 2016 -0500
+
+    Brought RMSE below 1.0 for probe data, fixed tests since data was off
+
 commit ed7c078c9a9b55488857d415aa51ab457a3917f4
 Author: Julio Mendez <julio94@cs.utexas.edu>
 Date:   Mon Jun 20 23:34:49 2016 -0500
