@@ -57,32 +57,47 @@ class TestNetflix (TestCase):
     # ----
     
 
-    # def test_netflix_predict_1(self):
-    #     global ANSWERS_LIST
-    #     global RATINGS_LIST
-    #     ANSWERS_LIST[:] = []
-    #     RATINGS_LIST[:] = []
+    def test_netflix_predict_1(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
 
-    #     rsme = round(netflix_rsme(), 2)
-    #     self.assertEqual(rsme, 1.79)   
+        movie_id = 1
+        cust_id = 30878
 
-    # def test_netflix_predict_2(self):
-    #     global ANSWERS_LIST
-    #     global RATINGS_LIST
-    #     ANSWERS_LIST[:] = []
-    #     RATINGS_LIST[:] = []
+        write = StringIO()
+        netflix_predict(movie_id, cust_id, write)
+        out = write.getvalue()
+        self.assertEqual(out, "3.7\n")
 
-    #     rsme = round(netflix_rsme(), 2)
-    #     self.assertEqual(rsme, 1.79)    
+    def test_netflix_predict_2(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
 
-    # def test_netflix_predict_3(self):
-    #     global ANSWERS_LIST
-    #     global RATINGS_LIST
-    #     ANSWERS_LIST[:] = []
-    #     RATINGS_LIST[:] = []
+        movie_id = 1
+        cust_id = 2647871
 
-    #     rsme = round(netflix_rsme(), 2)
-    #     self.assertEqual(rsme, 1.79)     
+        write = StringIO()
+        netflix_predict(movie_id, cust_id, write)
+        out = write.getvalue()
+        self.assertEqual(out, "3.5\n")  
+
+    def test_netflix_predict_3(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+
+        movie_id = 1
+        cust_id = 1283744
+
+        write = StringIO()
+        netflix_predict(movie_id, cust_id, write)
+        out = write.getvalue()
+        self.assertEqual(out, "3.6\n") 
 
 
     # ----
@@ -102,24 +117,29 @@ class TestNetflix (TestCase):
         out = write.getvalue()
         self.assertEqual(out, "1:\n3.7\n3.5\n3.6\n4.2\nRMSE: 0.58\n")
 
-    # def test_netflix_solve_2(self):
-    #     global ANSWERS_LIST
-    #     global RATINGS_LIST
-    #     ANSWERS_LIST[:] = []
-    #     RATINGS_LIST[:] = []
+    def test_netflix_solve_2(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+        file_in = StringIO("1000:\n2326571\n977808\n1010534\n1861759\n")
 
-    #     rsme = round(netflix_rsme(), 2)
-    #     self.assertEqual(rsme, 1.79)
+        write = StringIO()
+        netflix_solve(file_in, write)
+        out = write.getvalue()
+        self.assertEqual(out, "1000:\n3.4\n3.3\n3.1\n4.1\nRMSE: 0.75\n")
 
-    # def test_netflix_solve_3(self):
-    #     global ANSWERS_LIST
-    #     global RATINGS_LIST
-    #     ANSWERS_LIST[:] = []
-    #     RATINGS_LIST[:] = []
+    def test_netflix_solve_3(self):
+        global ANSWERS_LIST
+        global RATINGS_LIST
+        ANSWERS_LIST[:] = []
+        RATINGS_LIST[:] = []
+        file_in = StringIO("10002:\n1450941\n1213181\n308502\n2581993\n10003:\n1515111\n10004:\n1737087\n1270334\n1262711\n")
 
-
-    #     rsme = round(netflix_rsme(), 2)
-    #     self.assertEqual(rsme, 1.79)
+        write = StringIO()
+        netflix_solve(file_in, write)
+        out = write.getvalue()
+        self.assertEqual(out, "10002:\n4.0\n3.5\n4.2\n3.8\n10003:\n3.0\n10004:\n4.4\n3.9\n4.0\nRMSE: 0.86\n")
 
     # ----
     # netflix_rsme
